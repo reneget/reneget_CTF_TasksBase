@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Account</title>
+    <link rel="stylesheet" href="/static/style.css" />
+  </head>
+  <body class="auth-body">
+    <main class="auth-card account-card">
+      <div class="chat-top">
+        <h1>{{ user.username }}</h1>
+        <a href="/" class="chat-link">Back to clicker</a>
+      </div>
+
+      <div class="account-grid">
+        <div class="account-box">
+          <strong>Role</strong>
+          <span>{{ user.role }}</span>
+        </div>
+        <div class="account-box">
+          <strong>Created</strong>
+          <span>{{ user.created_at }}</span>
+        </div>
+      </div>
+
+      {% if user.role == "admin" %}
+      <section class="blank-panel">
+        <h2>Admin Profile</h2>
+        <p>No click widgets, no notes, no exports. This profile is empty.</p>
+        <a href="/admin/panel" class="chat-link">Open admin panel</a>
+      </section>
+      {% else %}
+      <section class="blank-panel">
+        <h2>Profile</h2>
+        <p>{{ user.bio or "Nothing interesting is stored for this account." }}</p>
+      </section>
+      {% endif %}
+
+      <section class="blank-panel">
+        <h2>Legacy API Mirror</h2>
+        <p>JWT mirror is still live for old ops clients: <code>/api/legacy/auth/token</code>.</p>
+        <p>Reserved claims include <code>super_admin</code>, but the mirror is detached from the main panel.</p>
+      </section>
+
+      <div class="auth-links">
+        <a href="/logout" class="chat-link">Log out</a>
+      </div>
+    </main>
+  </body>
+</html>

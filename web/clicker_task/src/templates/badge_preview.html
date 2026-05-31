@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Badge Preview</title>
+    <link rel="stylesheet" href="/static/style.css" />
+  </head>
+  <body class="auth-body">
+    <main class="auth-card mini-shell">
+      <div class="chat-top">
+        <h1>Badge Preview</h1>
+        <a href="/chat" class="chat-link">Back to chat</a>
+      </div>
+
+      <p class="auth-muted">Legacy sandbox for rendering chat badges. Cosmetic only.</p>
+
+      <form method="get" action="/chat/badge-preview" class="auth-form">
+        <input name="tpl" value="{{ template_input }}" maxlength="160" autocomplete="off" />
+        <button type="submit">Render Template</button>
+      </form>
+
+      <section class="blank-panel">
+        <h2>Available Context</h2>
+        <p>{{ context_keys|join(", ") }}</p>
+      </section>
+
+      <section class="blank-panel">
+        <h2>Rendered Badge</h2>
+        <div class="preview-output">{{ rendered }}</div>
+      </section>
+    </main>
+  </body>
+</html>

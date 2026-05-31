@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Player Stats</title>
+    <link rel="stylesheet" href="/static/style.css" />
+  </head>
+  <body class="auth-body">
+    <main class="auth-card mini-shell">
+      <div class="chat-top">
+        <h1>Stats Mirror</h1>
+        <a href="/" class="chat-link">Back to clicker</a>
+      </div>
+
+      <p class="auth-muted">Cached leaderboard from the old telemetry mirror. It often disagrees with reality.</p>
+
+      <section class="blank-panel">
+        <h2>Leaderboard</h2>
+        <table class="leaderboard-table">
+          <thead>
+            <tr>
+              <th>Player</th>
+              <th>Clicks</th>
+              <th>Rank</th>
+              <th>Note</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for row in rows %}
+            <tr>
+              <td>{{ row.player }}</td>
+              <td>{{ row.clicks }}</td>
+              <td>{{ row.rank }}</td>
+              <td>{{ row.note }}</td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </section>
+    </main>
+  </body>
+</html>

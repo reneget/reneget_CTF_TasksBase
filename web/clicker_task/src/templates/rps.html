@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>RPS Arena</title>
+    <link rel="stylesheet" href="/static/style.css" />
+  </head>
+  <body class="auth-body">
+    <main class="auth-card mini-shell">
+      <div class="chat-top">
+        <h1>Rock Paper Scissors</h1>
+        <a href="/" class="chat-link">Back to clicker</a>
+      </div>
+
+      <p class="auth-muted">Legacy minigame mirror. Some staff still think the reward token does something.</p>
+
+      <section class="blank-panel">
+        <h2>Current Streak</h2>
+        <p id="rps-streak" class="mini-value">{{ streak }}</p>
+        <p id="rps-note">Reach 5 wins for the shadow token.</p>
+      </section>
+
+      <div class="rps-actions">
+        <button type="button" data-move="rock">Rock</button>
+        <button type="button" data-move="paper">Paper</button>
+        <button type="button" data-move="scissors">Scissors</button>
+      </div>
+
+      <section class="blank-panel">
+        <h2>Round Result</h2>
+        <p id="rps-result" class="mini-result">Choose a move to start.</p>
+      </section>
+    </main>
+
+    <script>
+      const streakNode = document.getElementById("rps-streak");
+      const noteNode = document.getElementById("rps-note");
+      const resultNode = document.getElementById("rps-result");
+
+      for (const button of document.querySelectorAll("[data-move]")) {
+        button.addEventListener("click", async () => {
+          const payload = new URLSearchParams({ move: button.dataset.move });
+          const response = await fetch("/api/rps/play", {
+            method: "POST",
+            headers: { "Content-Type": "application/x-www-form-urlencoded" },
+            body: payload.toString(),
+          });
+          if (!response.ok) {
+            resultNode.textContent = "Round failed.";
+            return;
+          }
+          const data = await response.json();
+          streakNode.textContent = String(data.streak);
+          resultNode.textContent = `You: ${data.player_move} | Server: ${data.server_move} | ${data.outcome}`;
+          noteNode.textContent = data.reward
+            ? `Reward unlocked: ${data.reward}`
+            : data.message;
+        });
+      }
+    </script>
+  </body>
+</html>

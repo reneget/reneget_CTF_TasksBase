@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Clicker Register</title>
+    <link rel="stylesheet" href="/static/style.css" />
+  </head>
+  <body class="auth-body">
+    <main class="auth-card">
+      <p class="overline">Clicker Access</p>
+      <h1>Create Account</h1>
+      <p class="auth-muted">Register to sync your clicks between requests.</p>
+
+      {% if notice %}
+      <p class="notice notice-ok">{{ notice }}</p>
+      {% endif %}
+      {% if error %}
+      <p class="notice notice-error">{{ error }}</p>
+      {% endif %}
+
+      <form method="post" action="/register" class="auth-form">
+        <input name="username" placeholder="Username" autocomplete="off" required />
+        <input name="password" type="password" placeholder="Password" autocomplete="off" required />
+        <button type="submit">Register</button>
+      </form>
+
+      <div class="hint-box">
+        <strong>Migration note:</strong> this registration page still writes into the old sqlite auth store.
+      </div>
+
+      <div class="auth-links">
+        <a href="/login" class="chat-link">Already have an account?</a>
+        <a href="/" class="chat-link">Back to clicker</a>
+      </div>
+    </main>
+  </body>
+</html>

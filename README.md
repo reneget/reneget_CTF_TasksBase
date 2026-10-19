@@ -9,6 +9,11 @@
 | [NSK CTF 2026](https://t.me/nskctf/93) | Easy      | stegano   | [Carpet](stegano/Carpet/)                |
 | [NSK CTF 2026](https://t.me/nskctf/93) | Medium    | stegano   | [Селфи](stegano/Selfie/)                 |
 | [NSK CTF 2026](https://t.me/nskctf/93) | Medium    | web       | [Clicker](web/clicker_task/)             |
+| [KevaCTF2026](https://t.me/keva_team/121) | Medium    | web       | [Clicker (Easy one)](web/clicker_task(kevactf)/)             |
+| [KevaCTF2026](https://t.me/keva_team/121) | Easy    | forensic       | [Hidden stream (Easy one)](forensic/Hidden_stream(kevactf)/)             |
+| [KevaCTF2026](https://t.me/keva_team/121) | Easy    | forensic       | [Password in glasses wallpaper download](/forensic/Password_in_glasses_wallpaper_download/)             |
+
+
 
 ## Как устроен репозиторий
 
@@ -52,8 +57,6 @@
 
 ## Категории
 
-В репозитории уже подготовлены следующие категории:
-
 - `admin`
 - `crypto`
 - `forensic`
@@ -64,5 +67,3 @@
 - `reverse`
 - `stegano`
 - `web`
-
-Часть директорий пока пустая и зарезервирована под будущие задачи.
